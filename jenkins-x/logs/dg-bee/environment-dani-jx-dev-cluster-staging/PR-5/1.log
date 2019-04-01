@@ -8,3 +8,4 @@ Step: build-step-git-source-0:
 {"level":"info","ts":1554101718.8877773,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/******/environment-dani-**-dev-cluster-staging.git\" @ \"fb68998528ef3c5a69da3990f8eba635085c9bbe\" in path \"/workspace\""}
 Step: build-step-build:
 
+Adding missing Helm repo: jenkins-x http://chartmuseum.jenkins-x.io
