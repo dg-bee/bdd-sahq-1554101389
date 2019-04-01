@@ -1,0 +1,10 @@
+Step: build-step-credential-initializer:
+
+{"level":"warn","ts":1554101686.5543308,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554101686.5550292,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-0:
+
+{"level":"warn","ts":1554101687.54616,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554101688.3393776,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/******/environment-dani-**-dev-cluster-staging.git\" @ \"fb9b21750f208084466366ca7fd3295181a794b6\" in path \"/workspace\""}
+Step: build-step-build:
+
