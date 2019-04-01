@@ -1,0 +1,298 @@
+Step: build-step-credential-initializer:
+
+{"level":"warn","ts":1554101530.6037488,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554101530.604461,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-0:
+
+{"level":"warn","ts":1554101531.6697261,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1554101532.5007806,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/******/bdd-rsc-1554101389.git\" @ \"master\" in path \"/workspace\""}
+Step: build-step-jenkins:
+
+Picked up _JAVA_OPTIONS: -Xmx400m
+Started
+Running in Durability level: PERFORMANCE_OPTIMIZED
+  74.900 [id=36]	WARNING	i.f.k.c.i.VersionUsageUtils#alert: The client is using resource type 'customresourcedefinitions' with unstable version 'v1beta1'
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /tmp/jenkinsTests.tmp/jenkins3601237929722019888test/workspace/job
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withCredentials
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (CI Build and push snapshot)
+Stage "CI Build and push snapshot" skipped due to when conditional
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build Release)
+[Pipeline] git
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/******/bdd-rsc-1554101389.git # timeout=10
+Fetching upstream changes from https://github.com/******/bdd-rsc-1554101389.git
+ > git --version # timeout=10
+ > git fetch --tags --progress https://github.com/******/bdd-rsc-1554101389.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 8b9622d8e7b9228e57d32c4fcb9edf919b52aa87 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 8b9622d8e7b9228e57d32c4fcb9edf919b52aa87
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 8b9622d8e7b9228e57d32c4fcb9edf919b52aa87
+Commit message: "Draft create"
+First time build. Skipping changelog.
+[Pipeline] sh
++ ** step next-version --use-git-tag-only --tag
+created new version: 0.0.1 and written to file: ./VERSION
+Tag v0.0.1 created and pushed to remote origin
+[Pipeline] sh
++ cat VERSION
++ docker build -t 10.31.243.7:5000/******/bdd-rsc-1554101389:0.0.1 .
+Sending build context to Docker daemon  221.7kB
+Step 1/14 : FROM ruby:onbuild
+onbuild: Pulling from library/ruby
+f49cf87b52c1: Pulling fs layer
+7b491c575b06: Pulling fs layer
+b313b08bab3b: Pulling fs layer
+51d6678c3f0e: Pulling fs layer
+b7e583189d20: Pulling fs layer
+be5e68b07537: Pulling fs layer
+907309e0b355: Pulling fs layer
+7e6c388078bc: Pulling fs layer
+719369f99cd9: Pulling fs layer
+be5e68b07537: Waiting
+907309e0b355: Waiting
+7e6c388078bc: Waiting
+719369f99cd9: Waiting
+51d6678c3f0e: Waiting
+b7e583189d20: Waiting
+7b491c575b06: Verifying Checksum
+7b491c575b06: Download complete
+b313b08bab3b: Verifying Checksum
+b313b08bab3b: Download complete
+f49cf87b52c1: Verifying Checksum
+f49cf87b52c1: Download complete
+b7e583189d20: Verifying Checksum
+b7e583189d20: Download complete
+907309e0b355: Download complete
+7e6c388078bc: Verifying Checksum
+7e6c388078bc: Download complete
+be5e68b07537: Verifying Checksum
+be5e68b07537: Download complete
+719369f99cd9: Verifying Checksum
+719369f99cd9: Download complete
+51d6678c3f0e: Verifying Checksum
+51d6678c3f0e: Download complete
+f49cf87b52c1: Pull complete
+7b491c575b06: Pull complete
+b313b08bab3b: Pull complete
+51d6678c3f0e: Pull complete
+b7e583189d20: Pull complete
+be5e68b07537: Pull complete
+907309e0b355: Pull complete
+7e6c388078bc: Pull complete
+719369f99cd9: Pull complete
+Digest: sha256:476194d5c6a36a0409d6e8a3d28c183d1c4d6bf374cd8a814933ee0725e2a3c0
+Status: Downloaded newer image for ruby:onbuild
+[91m# Executing 4 build triggers...
+[0mStep 1/1 : COPY Gemfile /usr/src/app/
+Step 1/1 : COPY Gemfile.lock /usr/src/app/
+Step 1/1 : RUN bundle install
+ ---> Running in 97cb4ccff26f
+Fetching gem metadata from https://rubygems.org/............
+Fetching rake 12.3.1
+Installing rake 12.3.1
+Fetching concurrent-ruby 1.0.5
+Installing concurrent-ruby 1.0.5
+Fetching i18n 1.0.1
+Installing i18n 1.0.1
+Fetching minitest 5.11.3
+Installing minitest 5.11.3
+Fetching thread_safe 0.3.6
+Installing thread_safe 0.3.6
+Fetching tzinfo 1.2.5
+Installing tzinfo 1.2.5
+Fetching activesupport 5.0.7
+Installing activesupport 5.0.7
+Fetching builder 3.2.3
+Installing builder 3.2.3
+Fetching erubis 2.7.0
+Installing erubis 2.7.0
+Fetching mini_portile2 2.3.0
+Installing mini_portile2 2.3.0
+Fetching nokogiri 1.8.2
+Installing nokogiri 1.8.2 with native extensions
+Fetching rails-dom-testing 2.0.3
+Installing rails-dom-testing 2.0.3
+Fetching crass 1.0.4
+Installing crass 1.0.4
+Fetching loofah 2.2.2
+Installing loofah 2.2.2
+Fetching rails-html-sanitizer 1.0.4
+Installing rails-html-sanitizer 1.0.4
+Fetching actionview 5.0.7
+Installing actionview 5.0.7
+Fetching rack 2.0.5
+Installing rack 2.0.5
+Fetching rack-test 0.6.3
+Installing rack-test 0.6.3
+Fetching actionpack 5.0.7
+Installing actionpack 5.0.7
+Fetching nio4r 2.3.1
+Installing nio4r 2.3.1 with native extensions
+Fetching websocket-extensions 0.1.3
+Installing websocket-extensions 0.1.3
+Fetching websocket-driver 0.6.5
+Installing websocket-driver 0.6.5 with native extensions
+Fetching actioncable 5.0.7
+Installing actioncable 5.0.7
+Fetching globalid 0.4.1
+Installing globalid 0.4.1
+Fetching activejob 5.0.7
+Installing activejob 5.0.7
+Fetching mini_mime 1.0.0
+Installing mini_mime 1.0.0
+Fetching mail 2.7.0
+Installing mail 2.7.0
+Fetching actionmailer 5.0.7
+Installing actionmailer 5.0.7
+Fetching activemodel 5.0.7
+Installing activemodel 5.0.7
+Fetching arel 7.1.4
+Installing arel 7.1.4
+Fetching activerecord 5.0.7
+Installing activerecord 5.0.7
+Fetching bindex 0.5.0
+Installing bindex 0.5.0 with native extensions
+Using bundler 1.16.1
+Fetching byebug 10.0.2
+Installing byebug 10.0.2 with native extensions
+Fetching coffee-script-source 1.12.2
+Installing coffee-script-source 1.12.2
+Fetching execjs 2.7.0
+Installing execjs 2.7.0
+Fetching coffee-script 2.4.1
+Installing coffee-script 2.4.1
+Fetching method_source 0.9.0
+Installing method_source 0.9.0
+Fetching thor 0.20.0
+Installing thor 0.20.0
+Fetching railties 5.0.7
+Installing railties 5.0.7
+Fetching coffee-rails 4.2.2
+Installing coffee-rails 4.2.2
+Fetching ffi 1.9.23
+Installing ffi 1.9.23 with native extensions
+Fetching multi_json 1.13.1
+Installing multi_json 1.13.1
+Fetching jbuilder 2.7.0
+Installing jbuilder 2.7.0
+Fetching jquery-rails 4.3.3
+Installing jquery-rails 4.3.3
+Fetching rb-fsevent 0.10.3
+Installing rb-fsevent 0.10.3
+Fetching rb-inotify 0.9.10
+Installing rb-inotify 0.9.10
+Fetching listen 3.0.8
+Installing listen 3.0.8
+Fetching puma 3.11.4
+Installing puma 3.11.4 with native extensions
+Fetching sprockets 3.7.1
+Installing sprockets 3.7.1
+Fetching sprockets-rails 3.2.1
+Installing sprockets-rails 3.2.1
+Fetching rails 5.0.7
+Installing rails 5.0.7
+Fetching sass-listen 4.0.0
+Installing sass-listen 4.0.0
+Fetching sass 3.5.6
+Installing sass 3.5.6
+Fetching tilt 2.0.8
+Installing tilt 2.0.8
+Fetching sass-rails 5.0.7
+Installing sass-rails 5.0.7
+Fetching spring 2.0.2
+Installing spring 2.0.2
+Fetching spring-watcher-listen 2.0.1
+Installing spring-watcher-listen 2.0.1
+Fetching sqlite3 1.3.13
+Installing sqlite3 1.3.13 with native extensions
+Fetching turbolinks-source 5.1.0
+Installing turbolinks-source 5.1.0
+Fetching turbolinks 5.1.1
+Installing turbolinks 5.1.1
+Fetching uglifier 4.1.10
+Installing uglifier 4.1.10
+Fetching web-console 3.6.2
+Installing web-console 3.6.2
+Bundle complete! 15 Gemfile dependencies, 63 gems now installed.
+Bundled gems are installed into `/usr/local/bundle`
+Step 1/1 : COPY . /usr/src/app
+ ---> 3575f8e37887
+Removing intermediate container e9a9af63e469
+Removing intermediate container db1b66dd60ef
+Removing intermediate container 97cb4ccff26f
+Removing intermediate container c258d3f865dd
+Step 2/14 : ENV PORT 3000
+ ---> Running in 9ee85ad4bdbb
+ ---> 93cec61d4a76
+Removing intermediate container 9ee85ad4bdbb
+Step 3/14 : EXPOSE 3000
+ ---> Running in b1fe6cbdd1de
+ ---> 4a4039977c9d
+Removing intermediate container b1fe6cbdd1de
+Step 4/14 : RUN mkdir -p /usr/src/app
+ ---> Running in 85b085691ee0
+ ---> 04adbd9e6f34
+Removing intermediate container 85b085691ee0
+Step 5/14 : WORKDIR /usr/src/app
+ ---> 71a591601895
+Removing intermediate container 3191b63a06d0
+Step 6/14 : RUN apt-get update &&     apt-get install -y nodejs mysql-client postgresql-client sqlite3 vim --no-install-recommends &&     rm -rf /var/lib/apt/lists/*
+ ---> Running in d66ae0d81f9a
+Get:1 http://security.debian.org jessie/updates InRelease [44.9 kB]
+Ign http://deb.debian.org jessie InRelease
+Ign http://deb.debian.org jessie-updates InRelease
+Get:2 http://deb.debian.org jessie Release.gpg [2420 B]
+Ign http://deb.debian.org jessie-updates Release.gpg
+Get:3 http://deb.debian.org jessie Release [148 kB]
+Ign http://deb.debian.org jessie-updates Release
+Err http://deb.debian.org jessie-updates/main amd64 Packages
+  
+Err http://deb.debian.org jessie-updates/main amd64 Packages
+  
+Err http://deb.debian.org jessie-updates/main amd64 Packages
+  
+Get:4 http://security.debian.org jessie/updates/main amd64 Packages [825 kB]
+Get:5 http://deb.debian.org jessie/main amd64 Packages [9098 kB]
+Err http://deb.debian.org jessie-updates/main amd64 Packages
+  404  Not Found [IP: 151.101.120.204 80]
+Fetched 10.1 MB in 7s (1283 kB/s)
+[91mW: Failed to fetch http://deb.debian.org/debian/dists/jessie-updates/main/binary-amd64/Packages  404  Not Found [IP: 151.101.120.204 80]
+
+E: Some index files failed to download. They have been ignored, or old ones used instead.
+[0mThe command '/bin/sh -c apt-get update &&     apt-get install -y nodejs mysql-client postgresql-client sqlite3 vim --no-install-recommends &&     rm -rf /var/lib/apt/lists/*' returned a non-zero code: 100
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Promote to Environments)
+Stage "Promote to Environments" skipped due to earlier failure(s)
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 100
+Finished: FAILURE
